@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'space_flight_news' => [
+        'base_url' => env('SPACE_FLIGHT_NEWS_API_BASE_URL'),
+    ],
+
 ];
