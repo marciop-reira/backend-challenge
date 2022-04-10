@@ -1,0 +1,71 @@
+version: "3.7"
+services:
+    # image project
+    laravel_8:
+        build:
+            args:
+                user: marcio
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        image: laravel-app
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+            - mongodb
+            - queue
+        networks:
+            - laravel
+
+    # nginx
+    nginx:
+        image: nginx:alpine
+        restart: unless-stopped
+        ports:
+            - "8180:80"
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/:/etc/nginx/conf.d/
+        networks:
+            - laravel
+
+    # queue
+    queue:
+        build:
+            args:
+                user: marcio
+                uid: 1000
+            context: ./
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        command: "php artisan queue:work"
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+        networks:
+            - laravel
+
+    # redis
+    redis:
+        image: redis:latest
+        networks:
+            - laravel
+
+    # mongodb
+    mongodb:
+        container_name: mongodb
+        image: mongo
+        ports:
+            - "27017:27017"
+        logging:
+            driver: none
+        networks:
+            - laravel
+
+networks:
+    laravel:
+        driver: bridge
