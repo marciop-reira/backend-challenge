@@ -41,6 +41,15 @@ class ArticleService
     }
 
     /**
+     * @param string $title
+     * @return mixed
+     */
+    public function getArticleByTitle(string $title)
+    {
+        return $this->articleRepository->getArticleById($title);
+    }
+
+    /**
      * @param array $data
      * @return mixed
      */

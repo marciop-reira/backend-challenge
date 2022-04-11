@@ -22,11 +22,16 @@ interface ArticleRepositoryInterface
     public function getArticleById(string $id);
 
     /**
+     * @param string $title
+     * @return mixed
+     */
+    public function getArticleByTitle(string $title);
+
+    /**
      * @param array $data
      * @return mixed
      */
     public function createArticle(array $data);
-
 
     /**
      * @param Model $article

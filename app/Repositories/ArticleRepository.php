@@ -43,6 +43,14 @@ class ArticleRepository implements ArticleRepositoryInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function getArticleByTitle(string $title)
+    {
+        return $this->entity->where('title', $title)->first();
+    }
+
+    /**
      * @param array $data
      * @return Article|null
      */
