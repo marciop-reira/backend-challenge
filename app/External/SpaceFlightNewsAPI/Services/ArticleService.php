@@ -3,7 +3,9 @@
 namespace App\External\SpaceFlightNewsAPI\Services;
 
 use App\External\SpaceFlightNewsAPI\Repositories\Contracts\ArticleRepositoryInterface;
+use App\Mail\AlertMail;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Mail;
 
 /**
  *
@@ -29,7 +31,7 @@ class ArticleService
         try {
             return $this->articleRepository->getArticlesAmount($params);
         } catch (RequestException $e) {
-            dd("Error");
+            Mail::send(new AlertMail());
         }
     }
 
@@ -38,7 +40,7 @@ class ArticleService
         try {
             return collect($this->articleRepository->getAllArticles($params));
         } catch (RequestException $e) {
-            dd("Error");
+            Mail::send(new AlertMail());
         }
     }
 }
