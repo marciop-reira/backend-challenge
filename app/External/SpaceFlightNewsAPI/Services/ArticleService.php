@@ -26,6 +26,10 @@ class ArticleService
         $this->articleRepository = $articleRepository;
     }
 
+    /**
+     * @param array $params
+     * @return mixed|void
+     */
     public function getArticlesAmount(array $params = [])
     {
         try {
@@ -35,6 +39,10 @@ class ArticleService
         }
     }
 
+    /**
+     * @param array $params
+     * @return \Illuminate\Support\Collection|void
+     */
     public function getAllArticles(array $params = [])
     {
         try {
