@@ -21,6 +21,10 @@ class RepositoryServiceProvider extends ServiceProvider
             ArticleRepositoryInterface::class,
             ArticleRepository::class
         );
+        $this->app->bind(
+            \App\External\SpaceFlightNewsAPI\Repositories\Contracts\ArticleRepositoryInterface::class,
+            \App\External\SpaceFlightNewsAPI\Repositories\ArticleRepository::class
+        );
     }
 
     /**
