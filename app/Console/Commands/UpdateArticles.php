@@ -64,18 +64,20 @@ class UpdateArticles extends Command
      */
     private function updateArticles(int $start)
     {
-        $lastArticleIdFromApi = $this->getLastArticleFromAPI();
-        for ($i = $start+1; $i <= $lastArticleIdFromApi['id']; $i += self::PER_PAGE) {
-            $articles = $this->SFNArticleService->getAllArticles([
-                'id_gte' => $i,
-                'id_lt' => $i+self::PER_PAGE,
-                '_limit' => self::PER_PAGE
-            ]);
-            $articles->each(function($article) use ($start){
-                if (!$start || !$this->articleService->getArticleByTitle($article['title']))
-                    $this->articleService->createArticle($article);
-            });
-            echo "Record articles from {$i} to ".($i+self::PER_PAGE-1)."\n";
+        if ($response = $this->getLastArticleFromAPI()) {
+            $lastArticleIdFromApi = $response->first();
+            for ($i = $start + 1; $i <= $lastArticleIdFromApi['id']; $i += self::PER_PAGE) {
+                $articles = $this->SFNArticleService->getAllArticles([
+                    'id_gte' => $i,
+                    'id_lt' => $i + self::PER_PAGE,
+                    '_limit' => self::PER_PAGE
+                ]);
+                $articles->each(function ($article) use ($start) {
+                    if (!$start || !$this->articleService->getArticleByTitle($article['title']))
+                        $this->articleService->createArticle($article);
+                });
+                echo "Record articles from {$i} to " . ($i + self::PER_PAGE - 1) . "\n";
+            }
         }
     }
 
@@ -84,6 +86,6 @@ class UpdateArticles extends Command
      */
     private function getLastArticleFromAPI()
     {
-        return $this->SFNArticleService->getAllArticles(['_limit' => 1])->first();
+        return $this->SFNArticleService->getAllArticles(['_limit' => 1]);
     }
 }
