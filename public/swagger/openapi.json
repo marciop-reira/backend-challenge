@@ -1,0 +1,451 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Back-end Challenge",
+        "description": "Integration With The Space Flight News API",
+        "contact": {
+            "email": "marciop.usa@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "localhost:8180"
+        }
+    ],
+    "paths": {
+        "/articles": {
+            "get": {
+                "summary": "list all articles",
+                "operationId": "89181b74a8aa4d580750ede6aa32f92a",
+                "responses": {
+                    "200": {
+                        "description": "A list with articles",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Article"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Article not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "message": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "create a nem article",
+                "description": "",
+                "operationId": "ce06e2544b80bc76b184c771c0fb2e7e",
+                "requestBody": {
+                    "description": "Article to create",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "required": [
+                                        "title",
+                                        "url",
+                                        "imageUrl",
+                                        "newsSite",
+                                        "featured",
+                                        "launches",
+                                        "events"
+                                    ],
+                                    "properties": {
+                                        "title": {
+                                            "type": "string",
+                                            "maximum": 50,
+                                            "minimum": 3
+                                        },
+                                        "url": {
+                                            "type": "string",
+                                            "maximum": 255,
+                                            "minimum": 10
+                                        },
+                                        "imageUrl": {
+                                            "type": "string",
+                                            "maximum": 255,
+                                            "minimum": 10
+                                        },
+                                        "newsSite": {
+                                            "type": "string",
+                                            "maximum": 50,
+                                            "minimum": 5
+                                        },
+                                        "summary": {
+                                            "type": "string",
+                                            "maximum": 500,
+                                            "minimum": 10
+                                        },
+                                        "featured": {
+                                            "type": "boolean"
+                                        },
+                                        "launches": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "provider": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "events": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "provider": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "New created article",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error"
+                    }
+                }
+            }
+        },
+        "/articles/{id}": {
+            "get": {
+                "summary": "get article by id",
+                "operationId": "126f0079c2def3834cf2c4a2456d16f9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "article",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Article not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "message": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error"
+                    }
+                }
+            },
+            "put": {
+                "summary": "update article by id",
+                "operationId": "4f085080b7bb5191b08358e1afc074ce",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "description": "Article to create",
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "required": [],
+                                    "properties": {
+                                        "title": {
+                                            "type": "string",
+                                            "maximum": 50,
+                                            "minimum": 3
+                                        },
+                                        "url": {
+                                            "type": "string",
+                                            "maximum": 255,
+                                            "minimum": 10
+                                        },
+                                        "imageUrl": {
+                                            "type": "string",
+                                            "maximum": 255,
+                                            "minimum": 10
+                                        },
+                                        "newsSite": {
+                                            "type": "string",
+                                            "maximum": 50,
+                                            "minimum": 5
+                                        },
+                                        "summary": {
+                                            "type": "string",
+                                            "maximum": 500,
+                                            "minimum": 10
+                                        },
+                                        "featured": {
+                                            "type": "boolean"
+                                        },
+                                        "launches": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "provider": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "events": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "provider": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "article",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Article not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "message": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "delete article by id",
+                "operationId": "ec28483335ebdc4fd11f883fcf6f4487",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "article",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "message": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Article not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "message": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Article": {
+                "properties": {
+                    "id": {
+                        "description": "The article id",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "The article title",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "The article url",
+                        "type": "string"
+                    },
+                    "imageUrl": {
+                        "description": "The article imageUrl",
+                        "type": "string"
+                    },
+                    "newsSite": {
+                        "description": "The article newsSite",
+                        "type": "string"
+                    },
+                    "summary": {
+                        "description": "The article summary",
+                        "type": "string"
+                    },
+                    "publishedAt": {
+                        "description": "The article publishedAt",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "The article updatedAt",
+                        "type": "string"
+                    },
+                    "featured": {
+                        "description": "The article featured",
+                        "type": "boolean"
+                    },
+                    "launches": {
+                        "description": "The article launches",
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "provider": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "events": {
+                        "description": "The article events",
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "provider": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

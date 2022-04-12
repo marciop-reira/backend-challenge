@@ -43,22 +43,6 @@ class ArticleController extends Controller
      *     )
      *   ),
      *   @OA\Response(
-     *     response="404",
-     *     description="Article not found",
-     *     @OA\MediaType(
-     *        mediaType="application/json",
-     *        @OA\Schema(
-     *          type="array",
-     *          @OA\Items(
-     *            @OA\Property(
-     *              property="message",
-     *              type="string"
-     *            )
-     *          )
-     *        )
-     *     )
-     *   ),
-     *   @OA\Response(
      *     response="default",
      *     description="an ""unexpected"" error"
      *   )
@@ -193,12 +177,10 @@ class ArticleController extends Controller
      *     @OA\MediaType(
      *        mediaType="application/json",
      *        @OA\Schema(
-     *          type="array",
-     *          @OA\Items(
-     *            @OA\Property(
-     *              property="message",
-     *              type="string"
-     *            )
+     *          type="object",
+     *          @OA\Property(
+     *            property="message",
+     *            type="string"
      *          )
      *        )
      *     )
@@ -313,12 +295,10 @@ class ArticleController extends Controller
      *     @OA\MediaType(
      *        mediaType="application/json",
      *        @OA\Schema(
-     *          type="array",
-     *          @OA\Items(
-     *            @OA\Property(
-     *              property="message",
-     *              type="string"
-     *            )
+     *          type="object",
+     *          @OA\Property(
+     *            property="message",
+     *            type="string"
      *          )
      *        )
      *     )
@@ -365,12 +345,10 @@ class ArticleController extends Controller
      *     @OA\MediaType(
      *        mediaType="application/json",
      *        @OA\Schema(
-     *          type="array",
-     *          @OA\Items(
-     *            @OA\Property(
-     *              property="message",
-     *              type="string"
-     *            )
+     *          type="object",
+     *          @OA\Property(
+     *            property="message",
+     *            type="string"
      *          )
      *        )
      *     )

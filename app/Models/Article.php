@@ -15,121 +15,101 @@ class Article extends Model
     use HasFactory;
 
     /**
-     * The article id
      * @var string
      *
      * @OA\Property(
      *   property="id",
-     *   type="string",
-     *   description="The article id"
+     *   type="string"
      * )
      */
-    public string $id;
+    private string $id;
 
     /**
-     * The article title
      * @var string
      *
      * @OA\Property(
      *   property="title",
-     *   type="string",
-     *   description="The article title"
+     *   type="string"
      * )
      */
-    public string $title;
+    private string $title;
 
     /**
-     * The article url
      * @var string
      *
      * @OA\Property(
      *   property="url",
-     *   type="string",
-     *   description="The article url"
+     *   type="string"
      * )
      */
-    public string $url;
+    private string $url;
 
     /**
-     * The article imageUrl
      * @var string
      *
      * @OA\Property(
      *   property="imageUrl",
-     *   type="string",
-     *   description="The article imageUrl"
+     *   type="string"
      * )
      */
-    public string $imageUrl;
+    private string $imageUrl;
 
     /**
-     * The article newsSite
      * @var string
      *
      * @OA\Property(
      *   property="newsSite",
-     *   type="string",
-     *   description="The article newsSite"
+     *   type="string"
      * )
      */
-    public string $newsSite;
+    private string $newsSite;
 
     /**
-     * The article summary
      * @var string
      *
      * @OA\Property(
      *   property="summary",
-     *   type="string",
-     *   description="The article summary"
+     *   type="string"
      * )
      */
-    public string $summary;
+    private string $summary;
 
     /**
-     * The article publishedAt
      * @var string
      *
      * @OA\Property(
      *   property="publishedAt",
-     *   type="string",
-     *   description="The article publishedAt"
+     *   type="string"
      * )
      */
-    public string $publishedAt;
+    private string $publishedAt;
 
     /**
-     * The article updatedAt
      * @var string
      *
      * @OA\Property(
      *   property="updatedAt",
-     *   type="string",
-     *   description="The article updatedAt"
+     *   type="string"
      * )
      */
-    public string $updatedAt;
+    private string $updatedAt;
 
     /**
-     * The article featured
      * @var bool
      *
      * @OA\Property(
      *   property="featured",
-     *   type="boolean",
-     *   description="The article featured"
+     *   type="boolean"
      * )
      */
-    public bool $featured;
+    private bool $featured;
 
     /**
-     * The article launches
      * @var array
      *
      * @OA\Property(
      *   property="launches",
      *   type="array",
-     *   description="The article launches",
      *   @OA\Items(
      *     @OA\Property(
      *       property="id",
@@ -142,16 +122,14 @@ class Article extends Model
      *   )
      * )
      */
-    public array $launches;
+    private array $launches;
 
     /**
-     * The article events
      * @var array
      *
      * @OA\Property(
      *   property="events",
      *   type="array",
-     *   description="The article events",
      *   @OA\Items(
      *     @OA\Property(
      *       property="id",
@@ -164,7 +142,7 @@ class Article extends Model
      *   )
      * )
      */
-    public array $events;
+    private array $events;
 
     /**
      *
