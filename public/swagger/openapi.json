@@ -10,7 +10,7 @@
     },
     "servers": [
         {
-            "url": "localhost:8180"
+            "url": "http://localhost:8180"
         }
     ],
     "paths": {
@@ -27,24 +27,6 @@
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/components/schemas/Article"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Article not found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "message": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "type": "object"
                                     }
                                 }
                             }
@@ -184,15 +166,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "message": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -301,15 +280,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "message": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -353,15 +329,12 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "message": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -378,43 +351,33 @@
             "Article": {
                 "properties": {
                     "id": {
-                        "description": "The article id",
                         "type": "string"
                     },
                     "title": {
-                        "description": "The article title",
                         "type": "string"
                     },
                     "url": {
-                        "description": "The article url",
                         "type": "string"
                     },
                     "imageUrl": {
-                        "description": "The article imageUrl",
                         "type": "string"
                     },
                     "newsSite": {
-                        "description": "The article newsSite",
                         "type": "string"
                     },
                     "summary": {
-                        "description": "The article summary",
                         "type": "string"
                     },
                     "publishedAt": {
-                        "description": "The article publishedAt",
                         "type": "string"
                     },
                     "updatedAt": {
-                        "description": "The article updatedAt",
                         "type": "string"
                     },
                     "featured": {
-                        "description": "The article featured",
                         "type": "boolean"
                     },
                     "launches": {
-                        "description": "The article launches",
                         "type": "array",
                         "items": {
                             "properties": {
@@ -429,7 +392,6 @@
                         }
                     },
                     "events": {
-                        "description": "The article events",
                         "type": "array",
                         "items": {
                             "properties": {
