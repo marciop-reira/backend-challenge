@@ -1,3 +1,3 @@
 <?php
 
-const API_HOST = "localhost:8180";
+const API_HOST = "http://localhost:8180";
